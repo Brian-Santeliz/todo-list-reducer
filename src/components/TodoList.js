@@ -1,25 +1,23 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
 
-const TodoList = ({ state }) => {
+const TodoList = ({ state, DELETE_TASK, TOGGLE_TASK }) => {
   return (
     <>
       <ul className="list-group list-group-flush">
-        {state.map((todo, i) => {
-          return <TodoListItem todo={todo} key={todo.id} i={i} />;
-        })}
-        {/* <li className="list-group-item d-flex list">
-          <p className="">tarea descripcion</p>
-          <button className="btn btn-danger">Borrar</button>
-        </li>
-        <li className="list-group-item d-flex list">
-          <p className="">tarea descripcion</p>
-          <button className="btn btn-danger">Borrar</button>
-        </li>
-        <li className="list-group-item d-flex list">
-          <p className="">tarea descripcion</p>
-          <button className="btn btn-danger">Borrar</button>
-        </li> */}
+        {state.length > 0 ? (
+          state.map((todo, i) => (
+            <TodoListItem
+              todo={todo}
+              key={todo.id}
+              i={i}
+              DELETE_TASK={DELETE_TASK}
+              TOGGLE_TASK={TOGGLE_TASK}
+            />
+          ))
+        ) : (
+          <p className="text-center">Todos is empty</p>
+        )}
       </ul>
     </>
   );

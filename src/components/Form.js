@@ -2,21 +2,27 @@ import React, { useState } from "react";
 
 const Form = ({ ADD_TASK }) => {
   const [form, setForm] = useState("");
+  const [error, setError] = useState(false);
   const handleChange = (e) => {
     setForm(e.target.value);
   };
   const handleSumit = (e) => {
     e.preventDefault();
     if (form.trim().length <= 0) {
-      console.log("error");
+      setError(true);
       return;
     }
     ADD_TASK(form);
     setForm("");
-    //enviar la peticion al dispatch en el payload debe ir la tarea
+    setError(false);
   };
   return (
     <>
+      {error && (
+        <p className="alert alert-danger p-2 mt-3 text-center">
+          Write you task...
+        </p>
+      )}
       <form className="container mt-5" onSubmit={handleSumit}>
         <div className="form-group">
           <input
