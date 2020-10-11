@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const Form = () => {
+const Form = ({ ADD_TASK }) => {
   const [form, setForm] = useState("");
   const handleChange = (e) => {
     setForm(e.target.value);
@@ -11,7 +11,7 @@ const Form = () => {
       console.log("error");
       return;
     }
-    console.log("agegador");
+    ADD_TASK(form);
     setForm("");
     //enviar la peticion al dispatch en el payload debe ir la tarea
   };

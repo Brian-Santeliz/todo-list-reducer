@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useReducer } from "react";
 import Form from "./components/Form";
+import TodoList from "./components/TodoList";
+import reducer from "./components/Reducer/Reducer";
+import { Actions } from "./components/Reducer/Actions";
 import "./App.css";
+
+const initialState = {
+  todos: [],
+};
+
 const App = () => {
+  const [state, dispatch] = useReducer(reducer, initialState.todos);
+  console.log(state);
   //por hacer,
   /* 
     por hacer:
@@ -13,6 +23,13 @@ const App = () => {
     crear el initiState 
     probbar
   */
+
+  const ADD_TASK = (title) => {
+    dispatch({
+      type: Actions.ADD_TASK,
+      payload: title,
+    });
+  };
   return (
     <div>
       <nav className="navbar navbar-dark bg-primary d-flex justify-content-center">
@@ -22,24 +39,11 @@ const App = () => {
         <div className="row">
           <div className="col-md-7">
             <div className="container mt-5 ">
-              <ul className="list-group list-group-flush">
-                <li className="list-group-item d-flex list">
-                  <p className="">tarea descripcion</p>
-                  <button className="btn btn-danger">Borrar</button>
-                </li>
-                <li className="list-group-item d-flex list">
-                  <p className="">tarea descripcion</p>
-                  <button className="btn btn-danger">Borrar</button>
-                </li>
-                <li className="list-group-item d-flex list">
-                  <p className="">tarea descripcion</p>
-                  <button className="btn btn-danger">Borrar</button>
-                </li>
-              </ul>
+              <TodoList state={state} />
             </div>
           </div>
           <div className="col-md-5 ">
-            <Form />
+            <Form ADD_TASK={ADD_TASK} />
           </div>
         </div>
       </div>
