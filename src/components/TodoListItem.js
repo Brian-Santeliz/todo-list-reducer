@@ -15,7 +15,7 @@ const TodoListItem = ({ todo, i, DELETE_TASK, TOGGLE_TASK }) => {
           style={{ cursor: "pointer" }}
           onClick={() => handleToggle(todo.id)}
         >
-          {i}. {todo.title}
+          {i + 1}. {todo.title}
         </p>
         <button className="btn btn-danger" onClick={() => handleClick(todo.id)}>
           Borrar
