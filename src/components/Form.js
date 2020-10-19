@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import Context from "../components/contextTodo/context";
 
-const Form = ({ ADD_TASK }) => {
+const Form = () => {
   const [form, setForm] = useState("");
   const [error, setError] = useState(false);
+  const { ADD_TASK } = useContext(Context);
+
   const handleChange = (e) => {
     setForm(e.target.value);
   };

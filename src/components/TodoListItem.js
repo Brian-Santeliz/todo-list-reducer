@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import Context from "../components/contextTodo/context";
 
-const TodoListItem = ({ todo, i, DELETE_TASK, TOGGLE_TASK }) => {
+const TodoListItem = ({ todo, i }) => {
+  const { DELETE_TASK, TOGGLE_TASK } = useContext(Context);
+
   const handleClick = (todoId) => {
     DELETE_TASK(todoId);
   };

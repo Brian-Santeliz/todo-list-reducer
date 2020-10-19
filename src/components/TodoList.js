@@ -1,19 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import TodoListItem from "./TodoListItem";
+import Context from "../components/contextTodo/context";
 
-const TodoList = ({ state, DELETE_TASK, TOGGLE_TASK }) => {
+const TodoList = () => {
+  const { state } = useContext(Context);
   return (
     <>
       <ul className="list-group list-group-flush">
         {state.length > 0 ? (
           state.map((todo, i) => (
-            <TodoListItem
-              todo={todo}
-              key={todo.id}
-              i={i}
-              DELETE_TASK={DELETE_TASK}
-              TOGGLE_TASK={TOGGLE_TASK}
-            />
+            <TodoListItem todo={todo} key={todo.id} i={i} />
           ))
         ) : (
           <p className="text-center">Todos is empty</p>
