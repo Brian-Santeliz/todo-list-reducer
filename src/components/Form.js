@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
+import { Button, Form, FormGroup, Input, Alert, Container } from "reactstrap";
 import Context from "../components/contextTodo/context";
 
-const Form = () => {
+const FormTodo = () => {
   const [form, setForm] = useState("");
   const [error, setError] = useState(false);
   const { ADD_TASK } = useContext(Context);
@@ -22,27 +23,30 @@ const Form = () => {
   return (
     <>
       {error && (
-        <p className="alert alert-danger p-2 mt-3 text-center">
+        <Alert color="danger" className="p-2 mt-5 text-center">
           Write you task...
-        </p>
+        </Alert>
       )}
-      <form className="container mt-5" onSubmit={handleSumit}>
-        <div className="form-group">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Escribe tu tarea..."
-            name="title"
-            onChange={handleChange}
-            value={form}
-            autoComplete="false"
-            autoFocus={true}
-          />
-        </div>
-        <button className="btn btn-outline-primary btn-block ">Guardar</button>
-      </form>
+      <Container>
+        <Form className="mt-5" onSubmit={handleSumit}>
+          <FormGroup>
+            <Input
+              type="text"
+              placeholder="Add a task..."
+              name="title"
+              onChange={handleChange}
+              value={form}
+              autoComplete="false"
+              autoFocus={true}
+            />
+          </FormGroup>
+          <Button color="outline-primary" className="btn-block">
+            Save
+          </Button>
+        </Form>
+      </Container>
     </>
   );
 };
 
-export default Form;
+export default FormTodo;

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Context from "../components/contextTodo/context";
-
+import { ListGroupItem, Button } from "reactstrap";
 const TodoListItem = ({ todo, i }) => {
   const { DELETE_TASK, TOGGLE_TASK } = useContext(Context);
 
@@ -12,7 +12,7 @@ const TodoListItem = ({ todo, i }) => {
   };
   return (
     <>
-      <li className="list-group-item d-flex list">
+      <ListGroupItem className="d-flex list">
         <p
           className={todo.complete ? "completed" : null}
           style={{ cursor: "pointer" }}
@@ -20,10 +20,10 @@ const TodoListItem = ({ todo, i }) => {
         >
           {i + 1}. {todo.title}
         </p>
-        <button className="btn btn-danger" onClick={() => handleClick(todo.id)}>
-          Borrar
-        </button>
-      </li>
+        <Button color="danger" onClick={() => handleClick(todo.id)}>
+          Delete
+        </Button>
+      </ListGroupItem>
     </>
   );
 };
