@@ -1,7 +1,8 @@
 import { Actions } from "./Actions";
+import { v4 } from "uuid";
 const addTaskReduce = (title) => {
   return {
-    id: Date.now(),
+    id: v4(),
     title,
     complete: false,
   };

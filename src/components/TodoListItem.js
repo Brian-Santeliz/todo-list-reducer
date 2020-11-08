@@ -14,7 +14,7 @@ const TodoListItem = ({ todo, i }) => {
     <>
       <ListGroupItem className="d-flex list">
         <p
-          className={todo.complete ? "completed" : null}
+          className={todo.complete && "completed"}
           style={{ cursor: "pointer" }}
           onClick={() => handleToggle(todo.id)}
         >
