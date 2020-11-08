@@ -33,18 +33,19 @@ export const ContextProvider = ({ children }) => {
     });
   }, []);
 
-  const DELETE_TASK = (id) => {
+  const DELETE_TASK = useCallback((id) => {
     dispatch({
       type: Actions.DELETE_TASK,
       payload: id,
     });
-  };
-  const TOGGLE_TASK = (id) => {
+  }, []);
+
+  const TOGGLE_TASK = useCallback((id) => {
     dispatch({
       type: Actions.TOGGLE_TASK,
       payload: id,
     });
-  };
+  }, []);
 
   return (
     <Context.Provider
