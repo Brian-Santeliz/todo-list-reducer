@@ -1,4 +1,9 @@
-import React, { createContext, useReducer, useEffect } from "react";
+import React, {
+  createContext,
+  useReducer,
+  useEffect,
+  useCallback,
+} from "react";
 import { Actions } from "../Reducer/Actions";
 import reducer from "../Reducer/Reducer";
 const Context = createContext();
@@ -21,12 +26,12 @@ export const ContextProvider = ({ children }) => {
     localStorage.setItem("todo", JSON.stringify(state));
   }, [state]);
 
-  const ADD_TASK = (title) => {
+  const ADD_TASK = useCallback((title) => {
     dispatch({
       type: Actions.ADD_TASK,
       payload: title,
     });
-  };
+  }, []);
 
   const DELETE_TASK = (id) => {
     dispatch({
