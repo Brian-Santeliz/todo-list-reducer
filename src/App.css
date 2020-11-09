@@ -5,3 +5,8 @@
   text-decoration: line-through;
   color:rgb(255, 185, 185);
 }
+@media  screen and (max-width:420px){
+  .header{
+   font-size:1.2em;
+  }
+}
