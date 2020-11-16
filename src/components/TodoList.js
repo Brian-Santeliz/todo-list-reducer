@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import TodoListItem from "./TodoListItem";
-import Context from "../components/contextTodo/context";
+import { useCustomContext } from "../components/contextTodo/context";
 import { ListGroup } from "reactstrap";
 const TodoList = () => {
-  const { state } = useContext(Context);
+  const { state } = useCustomContext();
+
   return (
     <>
       <ListGroup flush>

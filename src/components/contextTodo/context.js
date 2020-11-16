@@ -3,6 +3,8 @@ import React, {
   useReducer,
   useEffect,
   useCallback,
+  useMemo,
+  useContext,
 } from "react";
 import { Actions } from "../Reducer/Actions";
 import reducer from "../Reducer/Reducer";
@@ -46,19 +48,23 @@ export const ContextProvider = ({ children }) => {
       payload: id,
     });
   }, []);
+  const value = useMemo(() => {
+    return {
+      ADD_TASK,
+      DELETE_TASK,
+      TOGGLE_TASK,
+      state,
+    };
+  }, [state, DELETE_TASK, TOGGLE_TASK, ADD_TASK]);
+  return <Context.Provider value={value}>{children}</Context.Provider>;
+};
 
-  return (
-    <Context.Provider
-      value={{
-        ADD_TASK,
-        DELETE_TASK,
-        TOGGLE_TASK,
-        state,
-      }}
-    >
-      {children}
-    </Context.Provider>
-  );
+export const useCustomContext = () => {
+  const context = useContext(Context);
+  if (!context) {
+    throw new Error("this context must be in the scope of provider.");
+  }
+  return context;
 };
 
 export default Context;

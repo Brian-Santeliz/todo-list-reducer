@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Button, Form, FormGroup, Input, Alert, Container } from "reactstrap";
-import Context from "../components/contextTodo/context";
+import { useCustomContext } from "../components/contextTodo/context";
 
 const FormTodo = () => {
   const [form, setForm] = useState("");
   const [error, setError] = useState(false);
-  const { ADD_TASK } = useContext(Context);
+  const { ADD_TASK } = useCustomContext();
 
   const handleChange = (e) => {
     setForm(e.target.value);

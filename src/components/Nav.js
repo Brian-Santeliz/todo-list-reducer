@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import Context from "../components/contextTodo/context";
+import React from "react";
+import { useCustomContext } from "../components/contextTodo/context";
 import { Navbar } from "reactstrap";
 const Nav = () => {
-  const { state } = useContext(Context);
+  const { state } = useCustomContext();
   return (
     <Navbar className="bg-primary p-2 d-flex justify-content-center">
       <h3 className="text-white mt-2 text-center header">
